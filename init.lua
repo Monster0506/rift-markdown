@@ -1,6 +1,7 @@
 local M = {}
 
 local KIND = "md."
+
 local DEFAULT_FACES = {
   h1 = { bold = true, fg = "cyan" },
   h2 = { bold = true, fg = "blue" },
@@ -15,6 +16,7 @@ local DEFAULT_FACES = {
   code = { fg = "green", bg = "#222222" },
   link = { fg = "blue", underline = true },
   fence = { fg = "grey" },
+  rule = { fg = "grey" },
 }
 
 local cfg = {
@@ -139,7 +141,6 @@ local function render_line(line, lstart, lend, in_fence)
       adornment = {
         text = string.rep(" ", math.max(0, left - #line)) .. string.rep("-", bar),
         placement = "trailing",
-        face = "diag.hint",
       },
     }
     return in_fence
@@ -217,7 +218,6 @@ function M.setup(opts)
       render()
     end
   end)
-
 end
 
 return M
